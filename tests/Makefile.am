@@ -5,7 +5,7 @@ AM_CFLAGS    = $(libmesh_CFLAGS)
 AM_CPPFLAGS  = $(libmesh_optional_INCLUDES) -I$(top_builddir)/include \
                $(libmesh_contrib_INCLUDES) $(CPPUNIT_CFLAGS) \
 	       -DLIBMESH_IS_UNIT_TESTING
-AM_LDFLAGS   = $(libmesh_LDFLAGS)
+AM_LDFLAGS   = $(libmesh_LDFLAGS) $(libmesh_optional_LDFLAGS)
 LIBS         = $(libmesh_optional_LIBS) $(CPPUNIT_LIBS)
 
 unit_tests_sources = \
@@ -47,7 +47,7 @@ endif
 # our GLIBC debugging preprocessor flags seem to potentially conflict
 # with libcppunit binaries.  Some cppunit versions work fine for us,
 # others segfault and/or hang.
-if !LIBMESH_ENABLE_GLIBCXX_DEBUGGING
+#if !LIBMESH_ENABLE_GLIBCXX_DEBUGGING
 if LIBMESH_DBG_MODE
   check_PROGRAMS         += unit_tests-dbg
   unit_tests_dbg_SOURCES  = $(unit_tests_sources)
@@ -55,7 +55,7 @@ if LIBMESH_DBG_MODE
   unit_tests_dbg_CXXFLAGS = $(CXXFLAGS_DBG)
   unit_tests_dbg_LDADD    = $(top_builddir)/libmesh_dbg.la
 endif
-endif
+#endif
 
 if LIBMESH_DEVEL_MODE
   check_PROGRAMS           += unit_tests-devel

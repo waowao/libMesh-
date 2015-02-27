@@ -57,6 +57,7 @@ echo CFLAGS.....\(oprof\)................. : $CFLAGS_OPROF $CFLAGS
      esac
      echo " "
 done
+echo LDFLAGS............................ : $LDFLAGS
 echo Install dir........................ : $prefix
 echo Build user......................... : $USER
 echo Build host......................... : $BUILD_HOST
@@ -190,6 +191,10 @@ if (test "x$enableoptional" = "xyes"); then
   fi
   if (test "x$libmesh_optional_LIBS" != "x"); then
   echo '  'libmesh_optional_LIBS............ : $libmesh_optional_LIBS
+  echo
+  fi
+  if (test "x$libmesh_optional_LDFLAGS" != "x"); then
+  echo '  'libmesh_optional_LDFLAGS......... : $libmesh_optional_LDFLAGS
   echo
   fi
 fi

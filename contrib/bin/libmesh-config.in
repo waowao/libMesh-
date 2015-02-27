@@ -138,7 +138,7 @@ while [ "x$1" != "x" ]; do
 	    ;;
 
 	"--ldflags")
-	    return_val="@libmesh_LDFLAGS@ $return_val"
+	    return_val="@LDFLAGS@ $return_val"
 	    ;;
 
 	"--version")

@@ -6,7 +6,7 @@ AC_DEFUN([LIBMESH_CONFIGURE_OPTIONAL_PACKAGES],
 
 # initialize these empty - append below
 # note that
-# libmesh_optional_INCLUDES and
+# libmesh_optional_INCLUDES, libmesh_optional_LDFLAGS, and
 # libmesh_optional_LIBS should point to third party packages
 # outside the libMesh source and installation tree, and will
 # be exported to the installation environment.
@@ -25,6 +25,7 @@ AC_DEFUN([LIBMESH_CONFIGURE_OPTIONAL_PACKAGES],
 # link with, usually not needed.  presently only for Tecplot's binary
 # library blob
 libmesh_optional_INCLUDES=""
+libmesh_optional_LDFLAGS=""
 libmesh_optional_LIBS=""
 libmesh_contrib_INCLUDES=""
 libmesh_subpackage_arguments=""
@@ -100,7 +101,8 @@ AC_CONFIG_FILES([contrib/boost/include/Makefile])
 CONFIGURE_PETSC
 if (test $enablempi != no) ; then
   libmesh_optional_INCLUDES="$MPI_INCLUDES_PATHS $libmesh_optional_INCLUDES"
-  libmesh_optional_LIBS="$MPI_LIBS_PATHS $MPI_LIBS $libmesh_optional_LIBS"
+  libmesh_optional_LDFLAGS="$MPI_LIBS_PATHS $libmesh_optional_LDFLAGS"
+  libmesh_optional_LIBS="$MPI_LIBS $libmesh_optional_LIBS"
 fi
 if (test $enablepetsc != no) ; then
   libmesh_optional_INCLUDES="$PETSCINCLUDEDIRS $libmesh_optional_INCLUDES"
